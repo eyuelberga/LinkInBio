@@ -1,0 +1,4 @@
+name = "link-in-bio"
+main = "src/index.ts"
+compatibility_date = "2022-05-13"
+kv_namespaces = [{ binding = "LINK_IN_BIO", id = "94dfa6a882404e08bb05bc8a67640700", preview_id = "b8358ab446df41fab5758b20c0ae8c3f"}]
