@@ -51,14 +51,14 @@ export default {
           else if ((key === "name" || key === "description") && typeof value === "string") {
             content[key] = value;
           }
-        }
-        // add profile picture to content
-        const profilePicture = formData.get('picture');
-        if (profilePicture && typeof profilePicture !== "string") {
-          content.picture = await toBase64(profilePicture);
+          // add profile picture to content
+          else if (key === "picture" && typeof value !== "string") {
+            content[key] = await toBase64(value);
+          }
         }
         // add links to content from linkMap
         content.links = Object.values(linkMap);
+        // add content to KV
         const id = generateId();
         await LINK_IN_BIO.put(id, JSON.stringify(content));
         return new Response(successPage(id), { headers: { 'Content-Type': 'text/html' } });
